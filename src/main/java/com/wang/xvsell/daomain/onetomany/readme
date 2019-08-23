@@ -1,0 +1,29 @@
+实体类关系建立以及映射配置
+	1、@OneToMany: 
+		作用：  建立一对多的关系映射 
+		属性： 
+		     targetEntityClass：指定多的多方的类的字节码 
+		     mappedBy：指定从表实体类中引用主表对象的名称。 
+		     cascade：指定要使用的级联操作 
+		     fetch：指定是否采用延迟加载  
+		     orphanRemoval：是否使用孤儿删除 
+	2、@ManyToOne 
+		作用： 建立多对一的关系 
+		属性： 
+		     targetEntityClass：指定一的一方实体类字节码 
+		     cascade：指定要使用的级联操作 
+		     fetch：指定是否采用延迟加载 
+	3、@JoinColumn 
+		作用：  用于定义主键字段和外键字段的对应关系。 
+		属性： 
+		     name：指定外键字段的名称 
+		     referencedColumnName：指定引用主表的主键字段名称 
+		     unique：是否唯一。默认值不唯一 
+		     nullable：是否允许为空。默认值允许。 
+		     insertable：是否允许插入。默认值允许。 
+		     updatable：是否允许更新。默认值允许。 
+		     columnDefinition：列的定义信息。
+	5、操作需求：保存一个客户和2个联系人
+	操作谁，就在谁的持久化类中配置级联
+	在@OneToMany 中配置cascade=CascadeType.ALL 级联所有
+	在实际开发中，级联删除请慎用！
